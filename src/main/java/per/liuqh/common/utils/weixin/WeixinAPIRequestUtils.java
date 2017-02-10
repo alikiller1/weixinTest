@@ -1,14 +1,8 @@
 package per.liuqh.common.utils.weixin;
 
-import java.lang.reflect.Type;
 import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.TreeMap;
-
-import org.apache.commons.collections.map.LinkedMap;
-
-import com.google.gson.Gson;
 
 import net.sf.json.JSONObject;
 import per.liuqh.common.utils.HttpRequest;
@@ -26,7 +20,7 @@ public class WeixinAPIRequestUtils {
 		String resp = HttpRequest.sendPost(MessageFormat.format(getAccesstokenUrl, appid,appsecret),"");
 		System.out.println("getAccestoken-->resp="+resp);
 		if(StringUtils.isNotBlank(resp)){
-			JSONObject  result=JSONObject.fromObject(resp);
+			Map<String,Object> result=GsonUtils.fromJson(resp, Map.class);
 			resp = "{\"access_token\":\"xxJX0MB4A\",\"exin\":7200}";
 			if(result.get("access_token")!=null){
 				return result.get("access_token").toString();
