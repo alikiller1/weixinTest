@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 public class DBUtil {
 	
-	
+
 	public static void main(String[] args) {
 		try {
 			Connection con = DBUtil.getConnection(
